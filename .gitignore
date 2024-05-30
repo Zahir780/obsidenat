@@ -1,5 +1,3 @@
-# Object file
-*.o
-
-# Ada Library Information
-*.ali
+.obsidian/workspace.json
+.obsidian/daily-notes.json
+*.zip

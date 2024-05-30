@@ -1,0 +1,53 @@
+{
+  "settings": {
+    "migrated": 5,
+    "iconPacksPath": ".obsidian/icons",
+    "fontSize": 16,
+    "emojiStyle": "native",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "FasKey",
+      "🔑",
+      "FasNoteSticky",
+      "FasDesktop",
+      "FasHouseLaptop"
+    ],
+    "recentlyUsedIconsSize": 5,
+    "rules": [],
+    "extraMargin": {
+      "top": 0,
+      "right": 4,
+      "bottom": 0,
+      "left": 0
+    },
+    "iconInTabsEnabled": false,
+    "iconInTitleEnabled": false,
+    "iconInFrontmatterEnabled": false,
+    "iconInFrontmatterFieldName": "icon",
+    "iconColorInFrontmatterFieldName": "iconColor",
+    "iconsBackgroundCheckEnabled": false,
+    "iconsInNotesEnabled": true,
+    "iconsInLinksEnabled": true,
+    "iconIdentifier": ":",
+    "debugMode": false,
+    "iconInTitlePosition": "above"
+  },
+  "Laravel": "FabLaravel",
+  "Github": "FabGithub",
+  "DailyNote": "📓",
+  "Database": "FasDatabase",
+  "PHP": "FabPhp",
+  "Vue.js": "FabVuejs",
+  "Temp": "⏳",
+  "CodingHelpBD": "FasHouseChimneyUser",
+  "ASP.Net": "FabMicrosoft",
+  "CodingHelpBD/BRGOA": "👨‍💼",
+  "CodingHelpBD/BRGOA/Website": "FabHtml5",
+  "Tips & Tricks": "ℹ",
+  "Office/E-Vision": "FasBriefcase",
+  "Office": "FasDesktop",
+  "Office/E-Vision/PIL.md": "FasHouseLaptop",
+  "Office/E-Vision/ESL Working File.md": "FasHouseLaptop",
+  "Obsidian Note": "FasNoteSticky",
+  "ASP.Net/API": "FasKey"
+}
