@@ -1,4 +1,4 @@
-# ESL 
+444# ESL 
 ==WEBMAIL==
 http://www.eslctg.com/webmail
 Email 	 :	support@eslctg.com
@@ -324,7 +324,7 @@ pass: p0sc0#1310
 
 ==AnyDesk==
 Id: 806228858
-Password: itadmin@123
+Password: Itadmin@123
 
 UltraViewer
 Id: 19597223
@@ -353,6 +353,9 @@ Balance 		: 4024.20 ৳ (Soft.Services)
 SMS Panel Link	: http://login.smsnet24.com/
 Email			: gs.cdba@gmail.com
 Password 		: 54321
+IP:103.25.83.211
+User: Administrator
+pass: 786@Esl10ctg@2023
 # mcpms
 ==AnyDesk==
 Id: 398268909
