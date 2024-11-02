@@ -1,4 +1,4 @@
-4# SQL update from one Table to another based on an ID match
+44# SQL update from one Table to another based on an ID match
 ```SQL
 UPDATE tbEmployeeAttendanceFinal 
 SET tbEmployeeAttendanceFinal.vEmployeeCode = b.vEmployeeCode 
@@ -62,4 +62,47 @@ SELECT  SUBSTRING(vEmployeeCode, CHARINDEX('-', vEmployeeCode) + 1, LEN(vEmploye
 #dulicateCheck:
 SELECT 
 SUBSTRING(vEmployeeCode, CHARINDEX('-', vEmployeeCode) + 1, LEN(vEmployeeCode)) AS EmployeeNumber FROM tbEmployeeInfo GROUP BY SUBSTRING(vEmployeeCode, CHARINDEX('-', vEmployeeCode) + 1, LEN(vEmployeeCode)) HAVING COUNT(*) > 1
+
+# মাল্টিপল টেবিল থেকে ইনার জয়েন দিয়ে ডাটা ডিলিট করার জন্য :
+ 
+উদাহরনঃ
+
+DELETE  a
+FROM OTSheet a
+INNER JOIN EmployeeInfo b ON a.vEmployeeId = b.vEmployeeId
+WHERE a.vMonth = 'august'
+AND a.iYear = 2024
+AND b.vSR = 'Salary-8'
+
+# Serially ১ বছরের year and Month Order By করার জন্য :
+
+SELECT * 
+FROM salary 
+WHERE vSR = 'Salary-4' 
+AND iYear IN (2014, 2015) 
+AND vEmployeeId = 'Emp-814' 
+ORDER BY 
+iYear, 
+DATEPART(MONTH, CAST(CONVERT(VARCHAR, iYear) + '-' + vMonth + '-01' AS DATETIME));
+
+# Year থেকে Date এ Convert করার জন্য
+
+
+declare @fdate date ,@tdate date
+
+set @fdate ='2023-07-01'  set @tdate ='2024-06-30'
+
+	
+	declare @startYear INT = YEAR(@fdate),			@endYear INT = YEAR(@tdate),
+	@previousYear Varchar(100),						@presentYear Varchar(100)
+	
+	
+						
+	
+    
+SET @previousYear = CAST(@startYear AS Varchar)			SET @presentYear = CAST(@endYear AS Varchar)
+
+Select  NetPayable = SUM(NetPayable) from  Bonus where  vEmpid = '648'  
+And ((iYear = @previousYear AND vMonth IN ('RyjvB', 'AvMó', '‡m‡Þ¤^i', 'A‡±vei', 'b‡f¤^i', 'wW‡m¤^i'))
+OR (iYear = @presentYear AND vMonth IN ('Rvbyqvix', '‡deªæqvix', 'gvP©', 'GwcÖj', '‡g', 'Ryb')));
 
