@@ -85,7 +85,7 @@ ORDER BY
 iYear, 
 DATEPART(MONTH, CAST(CONVERT(VARCHAR, iYear) + '-' + vMonth + '-01' AS DATETIME));
 
-# Year থেকে Date এ Convert করার জন্য
+# Year থেকে Date এ Convert করার জন্য(Fiscal Year অনুযায়ী)
 
 
 declare @fdate date ,@tdate date
@@ -106,3 +106,68 @@ Select  NetPayable = SUM(NetPayable) from  Bonus where  vEmpid = '648'
 And ((iYear = @previousYear AND vMonth IN ('RyjvB', 'AvMó', '‡m‡Þ¤^i', 'A‡±vei', 'b‡f¤^i', 'wW‡m¤^i'))
 OR (iYear = @presentYear AND vMonth IN ('Rvbyqvix', '‡deªæqvix', 'gvP©', 'GwcÖj', '‡g', 'Ryb')));
 
+# Year থেকে Date এ Convert করার জন্য(যে কোন date to date select এর জন্য )
+
+
+ 
+ 
+ declare @fdate date, @tdate date
+ 
+ set @fdate ='2023-01-01'
+ set @tdate ='2023-12-31'
+ 
+ 
+ 
+ 
+  select NetPayable= ISNULL(SUM(mBonus) ,0) from 
+  (
+     select *,case when 
+			vMonth='‡g' then CAST(iYear  as varchar(120))+'-05-31'  when --may
+			vMonth='AvMó' then CAST(iYear  as varchar(120))+'-08-31' when-- august
+			vMonth='A‡±vei' then CAST(iYear  as varchar(120))+'-10-31' when--october
+			vMonth='Ryb' then CAST(iYear  as varchar(120))+'-06-30' when--june
+			vMonth='‡m‡Þ¤^i' then CAST(iYear  as varchar(120))+'-09-30' when--september
+			vMonth='RyjvB' then CAST(iYear  as varchar(120))+'-07-31' when--july
+			vMonth='b‡f¤^i' then CAST(iYear  as varchar(120))+'-11-30' when--november
+			vMonth='‡deªæqvix' then CAST(iYear  as varchar(120))+'-02-28' when--feb
+			vMonth='GwcÖj' then CAST(iYear  as varchar(120))+'-04-30' when--april
+			vMonth='Rvbyqvix' then CAST(iYear  as varchar(120))+'-01-31' when---january
+			vMonth='wW‡m¤^i' then CAST(iYear  as varchar(120))+'-12-31' when--december
+			vMonth='gvP©' then CAST(iYear  as varchar(120))+'-03-31'---March
+  else 
+		'2000-01-01' 
+		end as generateDate  
+		from Bonus 
+		where vEmpID='112'
+  
+  )  
+  as temp 
+where generateDate between @fdate and  @tdate
+
+==অথবা==
+
+DECLARE @fdate DATE = '2023-01-01';
+DECLARE @tdate DATE = '2023-12-31';
+
+SELECT NetPayable = ISNULL(SUM(mBonus), 0)
+FROM (
+    SELECT *, 
+        generateDate = CASE vMonth
+            WHEN '‡g' THEN DATEADD(MONTH, 4, CAST(iYear AS VARCHAR(4)) + '-01-01')  -- May 31
+            WHEN 'AvMó' THEN DATEADD(MONTH, 7, CAST(iYear AS VARCHAR(4)) + '-01-01')  -- August 31
+            WHEN 'A‡±vei' THEN DATEADD(MONTH, 9, CAST(iYear AS VARCHAR(4)) + '-01-01')  -- October 31
+            WHEN 'Ryb' THEN DATEADD(MONTH, 5, CAST(iYear AS VARCHAR(4)) + '-01-01')  -- June 30
+            WHEN '‡m‡Þ¤^i' THEN DATEADD(MONTH, 8, CAST(iYear AS VARCHAR(4)) + '-01-01')  -- September 30
+            WHEN 'RyjvB' THEN DATEADD(MONTH, 6, CAST(iYear AS VARCHAR(4)) + '-01-01')  -- July 31
+            WHEN 'b‡f¤^i' THEN DATEADD(MONTH, 10, CAST(iYear AS VARCHAR(4)) + '-01-01')  -- November 30
+            WHEN '‡deªæqvix' THEN DATEADD(MONTH, 1, CAST(iYear AS VARCHAR(4)) + '-01-01')  -- February 28
+            WHEN 'GwcÖj' THEN DATEADD(MONTH, 3, CAST(iYear AS VARCHAR(4)) + '-01-01')  -- April 30
+            WHEN 'Rvbyqvix' THEN CAST(iYear AS VARCHAR(4)) + '-01-31'  -- January 31
+            WHEN 'wW‡m¤^i' THEN CAST(iYear AS VARCHAR(4)) + '-12-31'  -- December 31
+            WHEN 'gvP©' THEN DATEADD(MONTH, 2, CAST(iYear AS VARCHAR(4)) + '-01-01')  -- March 31
+            ELSE '2000-01-01'  -- Default date
+        END
+    FROM Bonus
+    WHERE vEmpID = '112'
+) AS temp
+WHERE generateDate BETWEEN @fdate AND @tdate;
