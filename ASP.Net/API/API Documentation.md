@@ -1,4 +1,4 @@
-44Creating an API in ASP.NET and handling AJAX requests involves a few key steps. Here's a step-by-step guide to help you set up a simple API and make AJAX requests to it.
+444Creating an API in ASP.NET and handling AJAX requests involves a few key steps. Here's a step-by-step guide to help you set up a simple API and make AJAX requests to it.
 ### Step 1: Set Up ASP.NET Project
 
 1. **Open Visual Studio:**
