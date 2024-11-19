@@ -1,4 +1,4 @@
-# Vue.js Lifecycle Hooks
+4# Vue.js Lifecycle Hooks
 | Lifecycle Hook | Description |
 | -------------- | ----------- |
 
