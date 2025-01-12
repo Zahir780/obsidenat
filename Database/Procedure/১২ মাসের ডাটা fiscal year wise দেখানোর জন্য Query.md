@@ -1,4 +1,4 @@
-Example:
+4Example:
 DECLARE @mBasic1 MONEY, @mCount1 INT, @mBasic2 MONEY, @mCount2 INT
 
 	;WITH CTE AS (
