@@ -26,26 +26,7 @@ AND MONTH(tbProductionEntry.dEntryDate) = MONTH('2023-05-01')
 ```SQL
 SELECT right('0000' + convert(varchar(10), 1), 5) AS Ticket
 ```
-# How To Delete All Data From All Table
-```SQL
-EXEC sp_MSForEachTable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'
-GO
-EXEC sp_MSForEachTable 'DELETE FROM ?'
-GO
--- enable referential integrity again
-EXEC sp_MSForEachTable 'ALTER TABLE ? WITH CHECK CHECK CONSTRAINT ALL'
-GO
-```
-# How To Truncate All Data From All Table
-```SQL
-EXEC sp_MSForEachTable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'
-GO
-EXEC sp_MSForEachTable 'TRUNCATE TABLE ?'
-GO
--- enable referential integrity again
-EXEC sp_MSForEachTable 'ALTER TABLE ? CHECK CONSTRAINT ALL'
-GO
-```
+
 # To get last index of "-"
 ```SQL
 DECLARE @value varchar(150) = 'printing-15-25'
@@ -63,16 +44,6 @@ SELECT  SUBSTRING(vEmployeeCode, CHARINDEX('-', vEmployeeCode) + 1, LEN(vEmploye
 SELECT 
 SUBSTRING(vEmployeeCode, CHARINDEX('-', vEmployeeCode) + 1, LEN(vEmployeeCode)) AS EmployeeNumber FROM tbEmployeeInfo GROUP BY SUBSTRING(vEmployeeCode, CHARINDEX('-', vEmployeeCode) + 1, LEN(vEmployeeCode)) HAVING COUNT(*) > 1
 
-# মাল্টিপল টেবিল থেকে ইনার জয়েন দিয়ে ডাটা ডিলিট করার জন্য :
- 
-উদাহরনঃ
-
-DELETE  a
-FROM OTSheet a
-INNER JOIN EmployeeInfo b ON a.vEmployeeId = b.vEmployeeId
-WHERE a.vMonth = 'august'
-AND a.iYear = 2024
-AND b.vSR = 'Salary-8'
 
 # Serially ১ বছরের year and Month Order By করার জন্য :
 
@@ -171,3 +142,5 @@ FROM (
     WHERE vEmpID = '112'
 ) AS temp
 WHERE generateDate BETWEEN @fdate AND @tdate;
+# Duplicate check করার জন্য
+select vStyleid, count(1) as duplicate from tbstyle  Group  by vstyleid having count(1)>1
