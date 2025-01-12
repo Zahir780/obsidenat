@@ -1,4 +1,4 @@
-# Ram এর manufacture and Name জানার জন্য cmd(WIN+r)
+4# Ram এর manufacture and Name জানার জন্য cmd(WIN+r)
 wmic memorychip get Manufacturer
 wmic memorychip get Speed
 
