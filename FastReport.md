@@ -1,4 +1,4 @@
-# FastReport এ level condition দিতে গেলে,
+4# FastReport এ level condition দিতে গেলে,
 
 [IIf([Table.vLeaveTypeName]=="Casual Leave","Total Leave","")]
 
